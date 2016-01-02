@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UgM-PK-0Bq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hMp-98-Mcb">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -43,7 +43,7 @@
         <!--Item 1-->
         <scene sceneID="LAr-Gu-5OK">
             <objects>
-                <viewController id="Hg2-TZ-Wmm" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController id="Hg2-TZ-Wmm" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gz1-nm-EXI"/>
                         <viewControllerLayoutGuide type="bottom" id="205-Fa-Acn"/>
@@ -54,15 +54,59 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vgl-K2-TVi">
                                 <rect key="frame" x="20" y="20" width="335" height="598"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Hg2-TZ-Wmm" id="039-nY-bhW"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="kox-bT-riY"/>
+                    <connections>
+                        <outlet property="mapView" destination="vgl-K2-TVi" id="QKl-Rv-cWM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oBO-2o-q2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="309.5" y="-300.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DGz-Qk-o6z">
+            <objects>
+                <viewController id="hMp-98-Mcb" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J1h-EM-GJk"/>
+                        <viewControllerLayoutGuide type="bottom" id="QjU-Kg-P82"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jMF-65-bwj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bN7-re-dDg">
+                                <rect key="frame" x="149" y="497" width="77" height="30"/>
+                                <state key="normal" title="Test Segue"/>
+                                <connections>
+                                    <segue destination="UgM-PK-0Bq" kind="show" id="2AE-IF-zly"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G3b-In-Rr1" userLabel="Email Text Field">
+                                <rect key="frame" x="129" y="145" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n6E-vK-IJG" userLabel="Password Text Field">
+                                <rect key="frame" x="129" y="206" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nzx-dO-HSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-672.5" y="97.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3UZ-91-aje">

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29D4FD651C3642B600BFBCDD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4FD641C3642B600BFBCDD /* LoginViewController.swift */; };
 		29FDB83D1C36383E00A2B529 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FDB83C1C36383E00A2B529 /* AppDelegate.swift */; };
 		29FDB83F1C36383E00A2B529 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FDB83E1C36383E00A2B529 /* MapViewController.swift */; };
 		29FDB8421C36383E00A2B529 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29FDB8401C36383E00A2B529 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29D4FD641C3642B600BFBCDD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		29FDB8391C36383E00A2B529 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29FDB83C1C36383E00A2B529 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29FDB83E1C36383E00A2B529 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				29FDB83E1C36383E00A2B529 /* MapViewController.swift */,
+				29D4FD641C3642B600BFBCDD /* LoginViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29D4FD651C3642B600BFBCDD /* LoginViewController.swift in Sources */,
 				29FDB83F1C36383E00A2B529 /* MapViewController.swift in Sources */,
 				29FDB83D1C36383E00A2B529 /* AppDelegate.swift in Sources */,
 			);
@@ -506,6 +510,7 @@
 				29FDB8631C36383E00A2B529 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		29FDB8641C36383E00A2B529 /* Build configuration list for PBXNativeTarget "OnTheMapTests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +519,7 @@
 				29FDB8661C36383E00A2B529 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		29FDB8671C36383E00A2B529 /* Build configuration list for PBXNativeTarget "OnTheMapUITests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +528,7 @@
 				29FDB8691C36383E00A2B529 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
