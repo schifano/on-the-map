@@ -70,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="309.5" y="-300.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="DGz-Qk-o6z">
             <objects>
-                <viewController id="hMp-98-Mcb" sceneMemberID="viewController">
+                <viewController id="hMp-98-Mcb" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J1h-EM-GJk"/>
                         <viewControllerLayoutGuide type="bottom" id="QjU-Kg-P82"/>
@@ -107,6 +107,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="G3b-In-Rr1" id="byL-F2-gT8"/>
+                        <outlet property="passwordTextField" destination="n6E-vK-IJG" id="vaH-v4-qlL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nzx-dO-HSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
