@@ -11,4 +11,11 @@ import UIKit
 
 class PasswordTextFieldDelegate: NSObject, UITextFieldDelegate {
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentString: NSString = textField.text!
+        let newString: NSString = currentString.stringByReplacingCharactersInRange(range, withString: string)
+        textField.text = newString as String
+        return true
+    }
 }
