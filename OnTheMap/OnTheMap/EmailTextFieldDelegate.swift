@@ -11,4 +11,9 @@ import Foundation
 
 class EmailTextFieldDelegate: NSObject, UITextFieldDelegate {
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        
+        return true
+    }
 }
