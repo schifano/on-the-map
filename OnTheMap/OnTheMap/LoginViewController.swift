@@ -13,4 +13,13 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    // TODO: Add constraints and aesthetics to text fields
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        
+        
+    }
 }
