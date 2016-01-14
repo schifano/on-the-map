@@ -24,4 +24,21 @@ extension UdacityClient {
         static let UserData: String = "https://www.udacity.com/api/users/"
         static let StudentLocation: String = "https://api.parse.com/1/classes/StudentLocation"
     }
+    
+    // MARK: JSON Body Keys {
+    struct JSONBodyKeys {
+        // MARK: POST - Creating a session
+        static let Udacity = "udacity"
+        static let Username = "username"
+        static let Password = "password"
+        
+        // MARK: POST - Student Location
+        static let UniqueKey = "uniqueKey"
+        static let FirstName = "firstName"
+        static let LastName = "lastName"
+        static let MapString = "mapString"
+        static let MediaURL = "mediaURL"
+        static let Latitude = "latitude"
+        static let Longitude = "longitude"
+    }
 }
