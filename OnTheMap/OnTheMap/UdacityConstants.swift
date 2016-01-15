@@ -41,4 +41,18 @@ extension UdacityClient {
         static let Latitude = "latitude"
         static let Longitude = "longitude"
     }
+    
+    // MARK: JSON Response Keys
+    struct JSONResponseKeys {
+        // MARK: General
+        static let StatusMessage = "status_message"
+        static let StatusCode = "status_code"
+        
+        // MARK: Authorization
+        static let RequestToken = "request_token"
+        static let SessionID = "session_id"
+        
+        // MARK: Account
+        static let UserID = "id"
+    }
 }
