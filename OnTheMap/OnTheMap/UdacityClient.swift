@@ -14,9 +14,22 @@ class UdacityClient: NSObject {
     // Shared session
     var session: NSURLSession
     
-    // Configuration object (What do I need this for?)
-    //    var config = UdacityClient()
+    // Authentication
+    var sessionID: String? = nil
+    var userID: Int? = nil
     
-
-
+    // MARK: Initializers
+    override init() {
+        session = NSURLSession.sharedSession()
+        super.init()
+    }
+    
+    
+    // MARK: Shared Instance
+    class func sharedInstance() -> UdacityClient {
+        struct Singleton {
+            static var sharedInstance = UdacityClient()
+        }
+        return Singleton.sharedInstance
+    }
 }
