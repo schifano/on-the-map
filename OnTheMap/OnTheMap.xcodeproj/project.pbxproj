@@ -11,6 +11,7 @@
 		293425671C41E2FE00CF7166 /* UdacitySignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293425661C41E2FE00CF7166 /* UdacitySignUpViewController.swift */; };
 		293425691C41E4E300CF7166 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293425681C41E4E300CF7166 /* UdacityClient.swift */; };
 		2934256B1C41F39D00CF7166 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934256A1C41F39D00CF7166 /* UdacityConstants.swift */; };
+		298B67481C5814EC005857FC /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298B67471C5814EC005857FC /* UdacityConvenience.swift */; };
 		29B2B2A71C3B9242001527B8 /* EmailTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B2B2A61C3B9242001527B8 /* EmailTextFieldDelegate.swift */; };
 		29B2B2A91C3B928A001527B8 /* PasswordTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B2B2A81C3B928A001527B8 /* PasswordTextFieldDelegate.swift */; };
 		29D4FD651C3642B600BFBCDD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4FD641C3642B600BFBCDD /* LoginViewController.swift */; };
@@ -45,6 +46,7 @@
 		293425661C41E2FE00CF7166 /* UdacitySignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacitySignUpViewController.swift; sourceTree = "<group>"; };
 		293425681C41E4E300CF7166 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		2934256A1C41F39D00CF7166 /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		298B67471C5814EC005857FC /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		29B2B2A61C3B9242001527B8 /* EmailTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailTextFieldDelegate.swift; sourceTree = "<group>"; };
 		29B2B2A81C3B928A001527B8 /* PasswordTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordTextFieldDelegate.swift; sourceTree = "<group>"; };
 		29D4FD641C3642B600BFBCDD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				293425681C41E4E300CF7166 /* UdacityClient.swift */,
 				2934256A1C41F39D00CF7166 /* UdacityConstants.swift */,
+				298B67471C5814EC005857FC /* UdacityConvenience.swift */,
 				293425641C40D85E00CF7166 /* UdacityAuthViewController.swift */,
 				293425661C41E2FE00CF7166 /* UdacitySignUpViewController.swift */,
 			);
@@ -304,6 +307,7 @@
 				293425691C41E4E300CF7166 /* UdacityClient.swift in Sources */,
 				29D4FD651C3642B600BFBCDD /* LoginViewController.swift in Sources */,
 				29FDB83F1C36383E00A2B529 /* MapViewController.swift in Sources */,
+				298B67481C5814EC005857FC /* UdacityConvenience.swift in Sources */,
 				29FDB83D1C36383E00A2B529 /* AppDelegate.swift in Sources */,
 				29B2B2A71C3B9242001527B8 /* EmailTextFieldDelegate.swift in Sources */,
 				2934256B1C41F39D00CF7166 /* UdacityConstants.swift in Sources */,

@@ -18,8 +18,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var session: NSURLSession!
     
     var backgroundGradient: CAGradientLayer? = nil
+    var tapRecognizer: UITapGestureRecognizer? = nil
     
-    // TODO: Add constraints and aesthetics to text fields
+    var keyboardAdjusted = false
+    var lastKeyboardOffset: CGFloat = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         /* Get the app delegate */
@@ -31,12 +34,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         /* Configure the UI */
         self.configureUI()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        subscribeToKeyboardNotifications()
+        addKeyboardDismissRecognizer()
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewDidDisappear(true)
+        unsubscribeToKeyboardNotifications()
+        removeKeyboardDismissRecognizer()
+    }
 }
-
-// TODO: Dismiss keyboard
 
 // MARK: LoginViewController (ConfigureUI)
 extension LoginViewController {
+    // TODO: Add constraints and aesthetics to text fields
     func configureUI() {
         /* Configure Background Gradient */
         // set background color to clear so that the gradient can be drawn on top of it
@@ -48,5 +63,55 @@ extension LoginViewController {
         backgroundGradient!.locations = [0.0, 1.0]
         backgroundGradient!.frame = view.frame
         self.view.layer.insertSublayer(backgroundGradient!, atIndex: 0)
+        
+        /* Configure Tap Recognizer */
+        tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+        tapRecognizer?.numberOfTapsRequired = 1
+    }
+}
+
+// MARK: LoginViewController - Show/Hide Keyboard, UITapGestureRecognizer
+extension LoginViewController {
+    // TODO: Dismiss keyboard
+    func addKeyboardDismissRecognizer() {
+        self.view.addGestureRecognizer(tapRecognizer!)
+    }
+    
+    func removeKeyboardDismissRecognizer() {
+        self.view.removeGestureRecognizer(tapRecognizer!)
+    }
+    
+    func handleSingleTap(recognizer: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func unsubscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if keyboardAdjusted == false {
+            lastKeyboardOffset = getKeyboardHeight(notification) / 2
+            self.view.superview?.frame.origin.y -= lastKeyboardOffset
+            keyboardAdjusted = true
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if keyboardAdjusted == true {
+            self.view.superview?.frame.origin.y += lastKeyboardOffset
+            keyboardAdjusted = false
+        }
+    }
+
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.CGRectValue().height
     }
 }
