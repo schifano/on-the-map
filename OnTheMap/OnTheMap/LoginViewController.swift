@@ -13,6 +13,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     var appDelegate: AppDelegate!
     var session: NSURLSession!
@@ -39,13 +40,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(true)
         subscribeToKeyboardNotifications()
         addKeyboardDismissRecognizer()
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewDidDisappear(true)
         unsubscribeToKeyboardNotifications()
         removeKeyboardDismissRecognizer()
+    }
+    
+    // MARK: Signup Methods
+    @IBAction func signUpButtonTouch(sender: UIButton) {
+        let request = NSURLRequest(URL: NSURL(string: "https://www.udacity.com/account/auth#!/signup")!)
+        UIApplication.sharedApplication().openURL(request.URL!)
+    }
+    
+    // MARK: Login Methods
+    @IBAction func loginButtonTouch(sender: UIButton) {
+        getSessionID()
+    }
+    
+    func getSessionID() {
+        
     }
 }
 
@@ -56,13 +71,16 @@ extension LoginViewController {
         /* Configure Background Gradient */
         // set background color to clear so that the gradient can be drawn on top of it
         self.view.backgroundColor = UIColor.clearColor()
-        let colorTop = UIColor(red: 1.0, green: 0.67, blue: 0.2, alpha: 1.0).CGColor
-        let colorBottom = UIColor(red: 0.886, green: 0.37, blue: 0.05, alpha: 1.0).CGColor
+        let colorTop = UIColor(red: 1.0, green: 0.596, blue: 0.043, alpha: 1.0).CGColor
+        let colorBottom = UIColor(red: 1.0 , green: 0.439, blue: 0.0, alpha: 1.0).CGColor
         backgroundGradient = CAGradientLayer()
         backgroundGradient!.colors = [colorTop, colorBottom]
         backgroundGradient!.locations = [0.0, 1.0]
         backgroundGradient!.frame = view.frame
         self.view.layer.insertSublayer(backgroundGradient!, atIndex: 0)
+        
+        // button color
+        loginButton.backgroundColor = UIColor(red: 0.953, green: 0.341, blue: 0.0073, alpha: 1.0)
         
         /* Configure Tap Recognizer */
         tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
