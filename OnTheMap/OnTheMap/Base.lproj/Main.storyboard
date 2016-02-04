@@ -47,18 +47,18 @@
                             <constraint firstItem="3hr-6p-L1x" firstAttribute="leading" secondItem="lm1-W2-zA2" secondAttribute="leadingMargin" constant="-20" id="pE3-7W-6lk"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="List" id="dCd-xP-CDR"/>
+                    <tabBarItem key="tabBarItem" title="" id="dCd-xP-CDR"/>
                     <navigationItem key="navigationItem" title="On The Map" id="CaO-Mu-yfk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Cu-0m-aXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="309.5" y="445.5"/>
         </scene>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="BPY-z2-XQQ">
             <objects>
                 <navigationController id="zQs-4F-VS9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="6B7-Jk-7lw"/>
+                    <tabBarItem key="tabBarItem" title="Map" id="6B7-Jk-7lw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3zb-Aa-CTD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -104,7 +104,7 @@
                             <constraint firstItem="vgl-K2-TVi" firstAttribute="leading" secondItem="UuL-Ku-ZCX" secondAttribute="leadingMargin" constant="-20" id="tER-2L-esJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="kox-bT-riY"/>
+                    <tabBarItem key="tabBarItem" title="" id="kox-bT-riY"/>
                     <navigationItem key="navigationItem" title="On The Map" id="kqv-Br-hkq"/>
                     <connections>
                         <outlet property="mapView" destination="vgl-K2-TVi" id="QKl-Rv-cWM"/>
@@ -127,7 +127,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bN7-re-dDg">
-                                <rect key="frame" x="149" y="497" width="77" height="30"/>
+                                <rect key="frame" x="146" y="617" width="85" height="30"/>
                                 <state key="normal" title="Test Segue"/>
                                 <connections>
                                     <segue destination="UgM-PK-0Bq" kind="show" id="2AE-IF-zly"/>
@@ -141,7 +141,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="0.38775534572892201" blue="0.13540645754479319" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n6E-vK-IJG" userLabel="Password Text Field">
                                 <rect key="frame" x="61" y="327" width="252" height="40"/>
@@ -151,7 +151,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="0.36190437057261315" blue="0.046688984330259808" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="va5-RY-2rS">
                                 <rect key="frame" x="167" y="238" width="42" height="21"/>
@@ -159,7 +159,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnB-wV-rfk">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnB-wV-rfk">
                                 <rect key="frame" x="62" y="427" width="251" height="32"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <state key="normal" title="Don't have an account? Sign Up">
@@ -182,28 +182,39 @@
                                     <action selector="loginButtonTouch:" destination="hMp-98-Mcb" eventType="touchUpInside" id="y3T-rn-PCE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Incorrect username or password." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9O-XC-Bkw">
+                                <rect key="frame" x="62" y="593" width="252" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.88506155299999978" green="0.53619463870791551" blue="0.096766377761859812" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="va5-RY-2rS" firstAttribute="top" secondItem="J1h-EM-GJk" secondAttribute="bottom" constant="218" id="0KQ-cc-32M"/>
-                            <constraint firstItem="QjU-Kg-P82" firstAttribute="top" secondItem="bN7-re-dDg" secondAttribute="bottom" constant="140" id="6V8-lC-mBP"/>
+                            <constraint firstItem="QjU-Kg-P82" firstAttribute="top" secondItem="bN7-re-dDg" secondAttribute="bottom" constant="20" id="6V8-lC-mBP"/>
+                            <constraint firstItem="e9O-XC-Bkw" firstAttribute="leading" secondItem="jMF-65-bwj" secondAttribute="leadingMargin" constant="42" id="6hj-nZ-S5e"/>
+                            <constraint firstItem="bN7-re-dDg" firstAttribute="top" secondItem="e9O-XC-Bkw" secondAttribute="bottom" constant="3" id="9Ho-m2-Vl2"/>
                             <constraint firstItem="n6E-vK-IJG" firstAttribute="leading" secondItem="jMF-65-bwj" secondAttribute="leadingMargin" constant="45" id="9gF-1A-54o"/>
                             <constraint firstItem="G3b-In-Rr1" firstAttribute="leading" secondItem="jMF-65-bwj" secondAttribute="leadingMargin" constant="45" id="Cnf-x0-mQj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bN7-re-dDg" secondAttribute="trailing" constant="129" id="HZ8-Z8-gHA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bN7-re-dDg" secondAttribute="trailing" constant="124" id="HZ8-Z8-gHA"/>
                             <constraint firstItem="G3b-In-Rr1" firstAttribute="top" secondItem="va5-RY-2rS" secondAttribute="bottom" constant="20" id="IL4-7V-TdC"/>
-                            <constraint firstItem="bN7-re-dDg" firstAttribute="leading" secondItem="jMF-65-bwj" secondAttribute="leadingMargin" constant="129" id="P4A-Et-ACq"/>
+                            <constraint firstItem="bN7-re-dDg" firstAttribute="leading" secondItem="jMF-65-bwj" secondAttribute="leadingMargin" constant="126" id="P4A-Et-ACq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="n6E-vK-IJG" secondAttribute="trailing" constant="46" id="QnQ-T1-Aa1"/>
                             <constraint firstItem="l7q-Qz-oO2" firstAttribute="leading" secondItem="jMF-65-bwj" secondAttribute="leadingMargin" constant="46" id="RD8-5F-4UG"/>
                             <constraint firstItem="l7q-Qz-oO2" firstAttribute="top" secondItem="n6E-vK-IJG" secondAttribute="bottom" constant="8" id="Ywb-q9-nJd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="l7q-Qz-oO2" secondAttribute="trailing" constant="45" id="aMQ-j1-zWa"/>
+                            <constraint firstItem="e9O-XC-Bkw" firstAttribute="top" secondItem="NnB-wV-rfk" secondAttribute="bottom" constant="134" id="fd6-G7-gne"/>
                             <constraint firstAttribute="trailingMargin" secondItem="va5-RY-2rS" secondAttribute="trailing" constant="146" id="hfY-F8-ZXr"/>
                             <constraint firstItem="n6E-vK-IJG" firstAttribute="top" secondItem="G3b-In-Rr1" secondAttribute="bottom" constant="8" id="il2-af-1th"/>
                             <constraint firstItem="va5-RY-2rS" firstAttribute="leading" secondItem="jMF-65-bwj" secondAttribute="leadingMargin" constant="147" id="oZe-Wa-5b1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e9O-XC-Bkw" secondAttribute="trailing" constant="41" id="qpT-aR-6he"/>
                             <constraint firstAttribute="trailingMargin" secondItem="G3b-In-Rr1" secondAttribute="trailing" constant="46" id="whk-ov-23U"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="debugTextLabel" destination="e9O-XC-Bkw" id="1KO-Pa-F1b"/>
                         <outlet property="emailTextField" destination="G3b-In-Rr1" id="byL-F2-gT8"/>
                         <outlet property="loginButton" destination="l7q-Qz-oO2" id="Kn1-1i-wfl"/>
                         <outlet property="passwordTextField" destination="n6E-vK-IJG" id="vaH-v4-qlL"/>
@@ -232,11 +243,11 @@
             </objects>
             <point key="canvasLocation" x="-722.5" y="97.5"/>
         </scene>
-        <!--Item-->
+        <!--List-->
         <scene sceneID="TTg-Qq-vBv">
             <objects>
                 <navigationController id="4mM-N3-oMJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="XWp-qJ-aL1"/>
+                    <tabBarItem key="tabBarItem" title="List" id="XWp-qJ-aL1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rWW-OK-Blz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
