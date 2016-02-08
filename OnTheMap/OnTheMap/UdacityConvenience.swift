@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
+// Makes authentication / login calls
+
+extension UdacityClient {
+    
+    func authenticateWithUdacity(username: String, password: String, completionHandler: (success: Bool, errorString: NSError?) -> Void) {
+     
+        print("reached authenticateWithUdacity method")
+        
+    }
+}

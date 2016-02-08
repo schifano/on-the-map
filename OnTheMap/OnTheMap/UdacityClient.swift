@@ -8,21 +8,25 @@
 
 import Foundation
 
+// Makes POST / GET calls
 class UdacityClient: NSObject {
     
     // MARK: Properties
     // Shared session
     var session: NSURLSession
     
-    // Authentication
-    var sessionID: String? = nil
-    var userID: Int? = nil
-    
     // MARK: Initializers
     override init() {
         session = NSURLSession.sharedSession()
         super.init()
     }
+    
+    // GET
+    
+    
+    // POST
+    
+    
     
     class func escapedParameters(parameters: [String : AnyObject]) -> String {
         var urlVars = [String]()
