@@ -89,13 +89,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 print("present view controller")
             } else {
                 // present error
-                // NSAlertError?
             }
         }
         // FIXME: Is this a taboo name for a function?
         self.segueToTabBarController()
-
-        //        getSessionID()
     }
     
     func segueToTabBarController() {
@@ -104,79 +101,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.presentViewController(controller, animated: true, completion: nil)
         })
     }
-    
-    func getSessionID() {
-        /* 1 & 2 Set the parameters ... no previous setup required for Udacity API */
-//        let methodParameters = [
-//            "username": emailTextField.text,
-//            "password": passwordTextField.text
-//        ]
 
-        // Unwrap the optional text field text
-        guard let email = emailTextField.text else {
-            print("Email text field is empty")
-            return
-        }
-        guard let pw = passwordTextField.text else {
-            print("Password text field is empty")
-            return
-        }
-        
-        print("Email text field: \(email)")
-        print("PW text field: \(pw)")
-        
-        /* 3. Configure the request */
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
-        request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = "{\"udacity\": {\"username\": \"\(email)\", \"password\":\(pw)\"\"}}".dataUsingEncoding(NSUTF8StringEncoding)
-        let session = NSURLSession.sharedSession()
-        /* 4. Make the request */
-        let task = session.dataTaskWithRequest(request) { (data, response, error) in
-            
-            /* GUARD: Was there an error? */
-            guard (error == nil) else {
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.debugTextLabel.text = "Session failed"
-                }
-                print("There was an error with starting the session: \(error)")
-                return
-            }
-            
-            /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                if let response = response as? NSHTTPURLResponse {
-                    print( "Your request returned an invalid response! Status code: \(response.statusCode)!")
-                } else if let response = response {
-                    print("Your request returned an invalid response! Response: \(response)!")
-                } else {
-                    print("Your request returned an invalid response!")
-                }
-                return
-            }
-            
-            /* 5. Parse the data */
-            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
-
-            let parsedResult: AnyObject!
-            do {
-                parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
-            } catch {
-                parsedResult = nil
-                print("Could not parse the data as JSON: '\(newData)'")
-                return
-            }
-
-            guard (parsedResult.objectForKey("status_code") == nil) else {
-                print("See the status_code and status_message in \(parsedResult)")
-                return
-            }
-        }
-        task.resume()
-    }
-    
     // FIXME: Do I even need this
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         return true
