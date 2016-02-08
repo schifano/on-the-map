@@ -79,7 +79,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        print("Email \(email)and Password \(pw)")
+        print("Email \(email) and Password \(pw)")
         
         // Authenticate with given user data
         UdacityClient.sharedInstance().authenticateWithUdacity(email, password: pw) { (success, errorString) in
@@ -91,9 +91,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 // present error
                 // NSAlertError?
             }
-
         }
+        // FIXME: Is this a taboo name for a function?
+        self.segueToTabBarController()
+
         //        getSessionID()
+    }
+    
+    func segueToTabBarController() {
+        dispatch_async(dispatch_get_main_queue(), {
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+            self.presentViewController(controller, animated: true, completion: nil)
+        })
     }
     
     func getSessionID() {
