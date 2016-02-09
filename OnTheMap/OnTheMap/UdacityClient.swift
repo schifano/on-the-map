@@ -22,7 +22,7 @@ class UdacityClient: NSObject {
     }
     
     // MARK: POST
-    func taskForPOSTMethod(method: String, parameters: [String: AnyObject], jsonBody: [String: AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func taskForPOSTMethod(method: String, parameters: [String: AnyObject]?, jsonBody: [String: AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         /* 1. Set the parameters ... if there were any */
         /* 2/3. Build the URL and configure the request */
         let urlString = Constants.BaseURLSecure + method
@@ -73,6 +73,50 @@ class UdacityClient: NSObject {
     
     
     // MARK: GET
+    func taskForGETMethod(method: String, parameters: [String: AnyObject]?, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        /* 1. Set the parameters...there are no parameters */
+        
+        /* 2/3. Build the URL and configure the request */
+        let urlString = UdacityClient.Constants.BaseURLSecure + method
+        let url = NSURL(string: urlString)!
+        let request = NSURLRequest(URL: url)
+        
+        /* 4. Make the request */
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            
+            /* GUARD: Was there an error? */
+            guard error == nil else {
+                print("There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                if let response = response as? NSHTTPURLResponse {
+                    print("Your request returned an invalid response! Status code: \(response.statusCode)")
+                } else if let response = response {
+                    print("Your request returned an invalid response! Response: \(response)")
+                } else {
+                    print("Your request returned an invalid response.")
+                }
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                print("There was no data returned by the request.")
+                return
+            }
+            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
+        
+            /* 5/6. Parse the data */
+            UdacityClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
+        }
+        /* 7. Start the request */
+        task.resume()
+        
+        return task
+    }
     
     /* Helper: Given raw JSON, return a usable Foundation object */
     class func parseJSONWithCompletionHandler(data: NSData, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
