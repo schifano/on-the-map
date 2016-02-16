@@ -12,7 +12,7 @@ import Foundation
 extension UdacityClient {
     struct Constants {
         // MARK: URLs
-        static let BaseURLSecure: String = "https://udacity.com/api/"
+        static let BaseURLSecure: String = "https://www.udacity.com/api/"
     }
     
     struct Methods {
@@ -39,8 +39,14 @@ extension UdacityClient {
         static let Account = "account"
         static let Session = "session"
         static let ID = "id"
-        static let User = "User"
+        static let User = "user"
         static let FirstName = "first_name"
         static let LastName = "last_name"
+    }
+    
+    struct StudentInformation {
+        static var userID = ""
+        static var firstName = ""
+        static var lastName = ""
     }
 }

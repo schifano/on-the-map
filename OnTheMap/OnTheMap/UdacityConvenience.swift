@@ -13,17 +13,29 @@ import UIKit
 
 extension UdacityClient {
     
-    func authenticateWithUdacity(username: String, password: String, completionHandler: (success: Bool, userID: String?, errorString: NSError?) -> Void) {
+    func authenticateWithUdacity(username: String, password: String, completionHandler: (success: Bool, errorString: NSError?) -> Void) {
      
         print("reached authenticateWithUdacity method")
         // login to udacity using username and password instead of token
         loginWithUdacity(username, password: password) { (success, userID, error) in
+            
             if success {
-                // unwrap optional value returned
                 if let userID = userID {
                     // Store the returned userID
                     UdacityClient.StudentInformation.userID = userID
+                    
+                    self.getPublicUserData() { (success, firstName, lastName, error) in
+                        if success {
+                            UdacityClient.StudentInformation.firstName = firstName!
+                            UdacityClient.StudentInformation.lastName = lastName!
+                        } else {
+                            completionHandler(success: success, errorString: error)
+                        }
+                    }
+                    completionHandler(success: success, errorString: error)
                 }
+            } else {
+                completionHandler(success: success, errorString: error)
             }
         }
     }
@@ -41,8 +53,9 @@ extension UdacityClient {
             if let error = error {
                 completionHandler(success: false, userID: nil, errorString: error)
             } else {
-                if let results = JSONResult[UdacityClient.JSONResponseKeys.UserKey] as? [String: AnyObject] {
+                if let results = JSONResult[UdacityClient.JSONResponseKeys.Account] as? [String: AnyObject] {
                     let userID = results[UdacityClient.JSONResponseKeys.UserKey] as? String
+                    print("userID after results: \(userID)") // TEST
                     completionHandler(success: true, userID: userID, errorString: nil)
                 } else {
                     completionHandler(success: true, userID: nil, errorString: NSError(domain: "Login parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse loginWithUdacity"]))

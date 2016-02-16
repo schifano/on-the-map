@@ -31,9 +31,12 @@ class UdacityClient: NSObject {
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
         do {
             request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(jsonBody, options: .PrettyPrinted)
+            // It is returning registered: false ?
         }
+        print("request: \(request)")
         
         /* 4. Make the request */
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
@@ -64,13 +67,13 @@ class UdacityClient: NSObject {
             /* 5/6. Parse the data and use the data (happens in completion handler) */
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
             print(NSString(data: newData, encoding: NSUTF8StringEncoding))
-            UdacityClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+            print("hello, newData?") // TEST
+            UdacityClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
         }
         /* 7. Start the request */
         task.resume()
         return task
     }
-    
     
     // MARK: GET
     func taskForGETMethod(method: String, parameters: [String: AnyObject]?, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {

@@ -79,20 +79,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        print("Email \(email) and Password \(pw)")
-        
         // Authenticate with given user data
-        UdacityClient.sharedInstance().authenticateWithUdacity(email, password: pw) { (success, errorString) in
+        UdacityClient.sharedInstance().authenticateWithUdacity(email, password: pw) { (success,errorString) in
             
             if (success) {
                 // present view controller
                 print("present view controller")
+                // FIXME: Is this a taboo name for a function?
+                self.segueToTabBarController()
             } else {
                 // present error
+                print("login error")
+                self.presentLoginFailedAlert(errorString)
             }
         }
-        // FIXME: Is this a taboo name for a function?
-        self.segueToTabBarController()
     }
     
     func segueToTabBarController() {
@@ -100,6 +100,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
             self.presentViewController(controller, animated: true, completion: nil)
         })
+    }
+    
+    func presentLoginFailedAlert(errorString: NSError?) {
+        dispatch_async(dispatch_get_main_queue()) {
+            let alert = UIAlertController(title: "Udacity login failed", message: errorString?.description, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) -> Void in
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
 
     // FIXME: Do I even need this
@@ -139,7 +148,6 @@ extension LoginViewController {
 
 // MARK: LoginViewController - Show/Hide Keyboard, UITapGestureRecognizer
 extension LoginViewController {
-    // TODO: Dismiss keyboard
     func addKeyboardDismissRecognizer() {
         self.view.addGestureRecognizer(tapRecognizer!)
     }
