@@ -19,6 +19,9 @@ extension ParseClient {
         
         // MARK: URLs
         static let BaseURLSecure = "https://api.parse.com/1/classes/"
+        
+        // MARK: Optional parameter
+        static let Number: Int = 100
     }
     
     struct Methods {
@@ -50,5 +53,6 @@ extension ParseClient {
         static let CreatedAt = "createdAt"
         static let UpdatedAt = "updatedAt"
         static let ACL = "ACL"
+        static let Results = "results"
     }
 }

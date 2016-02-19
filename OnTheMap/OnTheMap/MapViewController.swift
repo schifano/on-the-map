@@ -16,6 +16,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        // Retrieve student locations
+        ParseClient.sharedInstance().getMapStudentLocations() { locations, error in
+            
+        }
+        
         // Populate the dummy data
         let locations = hardCodedLocationData()
         var annotations = [MKPointAnnotation]()
