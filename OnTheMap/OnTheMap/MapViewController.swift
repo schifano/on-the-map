@@ -16,37 +16,77 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        getStudentLocationsForMap()
+    
+        // Populate the dummy data
+//        let locations = hardCodedLocationData()
+//        var annotations = [MKPointAnnotation]()
+//        
+//        for dictionary in locations {
+//            let lat = CLLocationDegrees(dictionary["latitude"] as! Double)
+//            let lon = CLLocationDegrees(dictionary["longitude"] as! Double)
+//            
+//            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+//            
+//            let firstName = dictionary["firstName"] as! String
+//            let lastName = dictionary["lastName"] as! String
+//            let mediaURL = dictionary["mediaURL"] as! String
+//            
+//            let annotation = MKPointAnnotation()
+//            annotation.coordinate = coordinate
+//            annotation.title = "\(firstName) \(lastName)"
+//            annotation.subtitle = mediaURL
+//            
+//            // Place annotation in an array
+//            annotations.append(annotation)
+//        }
+//        // Add completed array of annotations to the map
+//        self.currentMapView.addAnnotations(annotations)
+    }
+    
+    func getStudentLocationsForMap() {
         // Retrieve student locations
         ParseClient.sharedInstance().getMapStudentLocations() { locations, error in
-            
+            if let locations = locations {
+                dispatch_async(dispatch_get_main_queue()) {
+                    UdacityClient.StudentInformation.locations = locations
+                    self.mapView.reloadInputViews()
+                    self.addLocationsToMapView()
+                }
+            }
         }
-        
-        // Populate the dummy data
-        let locations = hardCodedLocationData()
+    }
+    
+    func addLocationsToMapView() {
         var annotations = [MKPointAnnotation]()
         
-        for dictionary in locations {
-            let lat = CLLocationDegrees(dictionary["latitude"] as! Double)
-            let lon = CLLocationDegrees(dictionary["longitude"] as! Double)
+        for location in UdacityClient.StudentInformation.locations {
             
-            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            let lat = CLLocationDegrees(location.latitude as Float)
+            let long = CLLocationDegrees(location.longitude as Float)
             
-            let firstName = dictionary["firstName"] as! String
-            let lastName = dictionary["lastName"] as! String
-            let mediaURL = dictionary["mediaURL"] as! String
+            // The lat and long are used to create a CLLocationCoordinates2D instance.
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             
+            let first = location.firstName! as String
+            let last = location.lastName! as String
+            let mediaURL = location.mediaURL! as String
+            
+            // Here we create the annotation and set its coordiate, title, and subtitle properties
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
-            annotation.title = "\(firstName) \(lastName)"
+            annotation.title = "\(first) \(last)"
             annotation.subtitle = mediaURL
             
-            // Place annotation in an array
+            // Finally we place the annotation in an array of annotations.
             annotations.append(annotation)
+            
         }
-        // Add completed array of annotations to the map
-        self.mapView.addAnnotations(annotations)
+        
+        // When the array is complete, we add the annotations to the map.
+        mapView.addAnnotations(annotations)
     }
+
     
     // TODO: Add dummy data
     /**

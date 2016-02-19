@@ -40,6 +40,7 @@ extension UdacityClient {
         }
     }
     
+    // MARK: POST Convenience Method
     func loginWithUdacity(username: String, password: String, completionHandler: (success: Bool, userID: String?, errorString: NSError?) -> Void) {
         
         /* 1. Specify parameters, method (if has {key}), and HTTP body (if POST) */
@@ -64,6 +65,7 @@ extension UdacityClient {
         }
     }
     
+    // MARK: GET Convenience Method
     func getPublicUserData(completionHandler: (success: Bool, firstName: String?, lastName: String?, error: NSError?) -> Void) {
         /* 1. Specify the parameters, method (if has {key}), and HTTP body (if POST) */
         var mutableUserMethod: String = UdacityClient.Methods.Users

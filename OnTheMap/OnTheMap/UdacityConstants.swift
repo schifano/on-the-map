@@ -48,5 +48,7 @@ extension UdacityClient {
         static var userID = ""
         static var firstName = ""
         static var lastName = ""
+        
+        static var locations: [StudentLocations] = [StudentLocations]()
     }
 }

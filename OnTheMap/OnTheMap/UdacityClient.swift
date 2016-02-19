@@ -34,7 +34,6 @@ class UdacityClient: NSObject {
         
         do {
             request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(jsonBody, options: .PrettyPrinted)
-            // It is returning registered: false ?
         }
         print("request: \(request)")
         
@@ -66,8 +65,7 @@ class UdacityClient: NSObject {
             
             /* 5/6. Parse the data and use the data (happens in completion handler) */
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
-            print("hello, newData?") // TEST
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding)) // TEST
             UdacityClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
         }
         /* 7. Start the request */
