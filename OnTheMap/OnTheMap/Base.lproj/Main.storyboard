@@ -6,49 +6,44 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--On The Map-->
+        <!--Student Table View-->
         <scene sceneID="0yE-1t-bso">
             <objects>
-                <viewController id="8gh-Yz-i6C" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y39-Ah-TWE"/>
-                        <viewControllerLayoutGuide type="bottom" id="G8q-4F-2Gd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lm1-W2-zA2">
+                <viewController title="Student Table View" id="8gh-Yz-i6C" customClass="TableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2yA-JG-qeC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dwA-Gl-JVj">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="On The Map" id="aW4-dJ-3L5"/>
-                                </items>
-                            </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3hr-6p-L1x">
-                                <rect key="frame" x="-4" y="64" width="375" height="554"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="kBs-vO-fDu">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kBs-vO-fDu" id="niO-Ip-7bM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="3hr-6p-L1x" secondAttribute="trailing" constant="-20" id="FfH-qZ-bkl"/>
-                            <constraint firstItem="3hr-6p-L1x" firstAttribute="top" secondItem="dwA-Gl-JVj" secondAttribute="bottom" id="RU3-wL-nTJ"/>
-                            <constraint firstItem="G8q-4F-2Gd" firstAttribute="top" secondItem="3hr-6p-L1x" secondAttribute="bottom" id="SUq-AA-oa3"/>
-                            <constraint firstItem="3hr-6p-L1x" firstAttribute="leading" secondItem="lm1-W2-zA2" secondAttribute="leadingMargin" constant="-20" id="pE3-7W-6lk"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" id="dCd-xP-CDR"/>
-                    <navigationItem key="navigationItem" title="On The Map" id="CaO-Mu-yfk"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentLocationTableViewCell" textLabel="huQ-qQ-pln" detailTextLabel="kHq-zY-JvH" style="IBUITableViewCellStyleSubtitle" id="jKY-CZ-4y6">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jKY-CZ-4y6" id="Dmg-pR-txN">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="huQ-qQ-pln">
+                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kHq-zY-JvH">
+                                            <rect key="frame" x="15" y="25" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="On The Map" id="CaO-Mu-yfk">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="uLT-Q0-3XX"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Cu-0m-aXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="-223.5" y="-290.5"/>
         </scene>
-        <!--On The Map-->
+        <!--Map View-->
         <scene sceneID="LAr-Gu-5OK">
             <objects>
-                <viewController id="Hg2-TZ-Wmm" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Map View" id="Hg2-TZ-Wmm" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gz1-nm-EXI"/>
                         <viewControllerLayoutGuide type="bottom" id="205-Fa-Acn"/>
@@ -105,7 +100,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="kox-bT-riY"/>
-                    <navigationItem key="navigationItem" title="On The Map" id="kqv-Br-hkq"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="1gC-YM-6AS">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="nCA-iv-Xlt"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="vgl-K2-TVi" id="QKl-Rv-cWM"/>
                     </connections>

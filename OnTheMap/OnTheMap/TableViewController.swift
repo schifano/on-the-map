@@ -14,8 +14,10 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
+        populateStudentLocationsInTableView()
     }
     
+    // MARK: TableViewDelegate Methods
     // provide number of cells
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return UdacityClient.StudentInformation.locations.count
@@ -27,15 +29,28 @@ class TableViewController: UITableViewController {
         let location = UdacityClient.StudentInformation.locations[indexPath.row]
         
         // Assign cell properties
-        cell.textLabel?.text = "\(location.firstName) \(location.lastName)"
+        cell.textLabel?.text = "\(location.firstName!) \(location.lastName!)"
         cell.detailTextLabel?.text = location.mediaURL
         // FIXME: Add pin image
-        
         return cell
     }
     
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // open URL
+    }
+    
+    // MARK: Table UI Methods
+    func populateStudentLocationsInTableView() {
+        ParseClient.sharedInstance().getMapStudentLocations() { locations, error in
+            if let locations = locations {
+                dispatch_async(dispatch_get_main_queue()) {
+                    UdacityClient.StudentInformation.locations = locations
+                    self.tableView.reloadData()
+                }
+            } else {
+                // error
+                print("You've got an error")
+            }
+        }
     }
 }
